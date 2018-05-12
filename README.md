@@ -16,20 +16,49 @@ clone github repository, then in docker-compose-single-broker.yml:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
 
-... then
+...then
 
     docker-compose -f ./docker-compose-single-broker.yml start/stop
 
     netstat -tulpn | grep 9092
+
+    docker exec -it 892 bash
     
+    kafka-topics.sh --zookeeper zookeeper:2181 --list
+    
+    kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic hello-events
+        
 # external cassandra
 
 cassandra
 
     docker run --name some-cassandra -d -p 9042:9042 cassandra:latest
 
-... then
+...then
 
     docker start/stop some-cassandra
 
     netstat -tulpn | grep 9042
+
+    docker run -it --link some-cassandra:cassandra --rm cassandra cqlsh cassandra
+    
+    DESCRIBE KEYSPACES
+    
+...then run Cassandra-Viewer
+    
+    https://github.com/Kindrat/cassandra-client
+    
+    gradle assemble
+    
+    java -jar ./build/...jar
+
+prerequisite:
+
+    sudo dnf install java-1.8.0-openjdk-openjfx
+
+...then
+
+    localhost:9041
+    keyspace = hello_lagom_stream
+    
+        
