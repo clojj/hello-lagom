@@ -1,8 +1,8 @@
-//lagomKafkaEnabled in ThisBuild := false
-//lagomKafkaAddress in ThisBuild := "localhost:2181"
+lagomKafkaEnabled in ThisBuild := false
+lagomKafkaAddress in ThisBuild := "localhost:9092"
 
-//lagomCassandraEnabled in ThisBuild := false
-//lagomUnmanagedServices in ThisBuild := Map("cas_native" -> "http://localhost:9042")
+lagomCassandraEnabled in ThisBuild := false
+lagomUnmanagedServices in ThisBuild := Map("cas_native" -> "http://localhost:9042")
 
 organization in ThisBuild := "com.example"
 version in ThisBuild := "1.0-SNAPSHOT"
