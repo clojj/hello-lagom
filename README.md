@@ -61,4 +61,6 @@ prerequisite:
     localhost:9041
     keyspace = hello_lagom_stream
     
-        
+### Chrome
+
+install extension "Simple Websockets"        
